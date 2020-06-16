@@ -8,7 +8,7 @@
 npm install
 ```
 
-### Compiles and hot-reloads for development(启动vue项目)
+### Start project(启动express项目)
 
 ```
 npm start
