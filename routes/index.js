@@ -16,4 +16,8 @@ router.get('/wdata', function (req, res, next) {
   })
 })
 
+router.post('/login', function (req, res) {
+  console.log(req.body);
+})
+
 module.exports = router;
