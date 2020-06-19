@@ -4,7 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const bodyParser = require('body-parser');
-
+//! 配置session
+const session = require('express-session');
 //! 引入路由
 var indexRouter = require('./routes/index');
 //! login路由
@@ -26,11 +27,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
+//! 配置express-session中间件
+app.use(session({
+  secret: "keyboard cat",
+  resave: false,
+  saveUninitialized: true
+}))
 
 //! 这个路由中间件配置
 app.use('/api', indexRouter);
 //! login路由
-// app.use('/api/login', loginRouter);
+app.use('/api/user', loginRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
