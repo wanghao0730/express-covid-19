@@ -19,20 +19,22 @@ superagent
     const $getListByCountryTypeService2true = $('#getListByCountryTypeService2true').html();
     //todo 国内疫情
     const $getAreaStat = $('#getAreaStat').html();
+    //! 存储国外疫情的数据 使用
+    let worldData = {};
     //! 存储中国内陆的数据
     let areaData = {};
     eval($getListByCountryTypeService2true.replace(/window/g, 'worldData'));
     eval($getAreaStat.replace(/window/g, 'areaData'));
     console.log($getListByCountryTypeService2true);
     console.log($getAreaStat);
-    //! 写入到json中
+    //! 写入到存储世界疫情数据的json中
     fs.writeFile(path.join(__dirname, 'data/world-data.json'), JSON.stringify(worldData), (err) => {
       if (err) {
         throw err;
       }
       console.log('数据写入成功');
     })
-    //! 写入到json中
+    //! 写入到存储国内疫情数据的json中
     fs.writeFile(path.join(__dirname, 'data/area-data.json'), JSON.stringify(areaData), (err) => {
       if (err) {
         throw err;
