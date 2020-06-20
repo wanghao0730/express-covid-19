@@ -10,6 +10,8 @@ const session = require('express-session');
 var indexRouter = require('./routes/index');
 //! login路由
 const loginRouter = require('./routes/login');
+//! detail路由
+const detail = require('./routes/detail');
 
 var app = express();
 //!  view engine setup 配置视图相关
@@ -38,6 +40,8 @@ app.use(session({
 app.use('/api', indexRouter);
 //! login路由
 app.use('/api/user', loginRouter);
+//! detai路由
+app.use('/api/detail', detail)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
