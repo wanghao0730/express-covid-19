@@ -10,8 +10,11 @@ const session = require('express-session');
 var indexRouter = require('./routes/index');
 //! login路由
 const loginRouter = require('./routes/login');
+const registerRouter = require('./routes/register')
 //! detail路由
 const detail = require('./routes/detail');
+//! 實時播報路由
+const time = require('./routes/time')
 
 var app = express();
 //!  view engine setup 配置视图相关
@@ -40,8 +43,12 @@ app.use(session({
 app.use('/api', indexRouter);
 //! login路由
 app.use('/api/user', loginRouter);
+//!register路由
+app.use('/api/sing', registerRouter)
 //! detai路由
-app.use('/api/detail', detail)
+app.use('/api/detail', detail);
+//! 實時路由
+app.use('/api/time', time);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

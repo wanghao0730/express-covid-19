@@ -29,16 +29,11 @@ router.post('/login', (req, res) => {
       })
     } else {
       res.cookie(`userName`, `${data[0].user_name}`, { maxAge: 3600 * 60 * 24 }).send({
+        user: data[0].user_name,
         code: 200,
         sql: '登录成功'
       })
     }
-    // if (data && data[0].user_pwd === pwd) {
-    //   res.send('登录成功');      
-    // }
-
-    // 判断用户的信息是否存在对于用户名和密码分别判断
-
   };
   dbConfig.sqlConnect(sql, sqlArr, callback)
 });
