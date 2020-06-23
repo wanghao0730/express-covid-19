@@ -14,12 +14,14 @@ const registerRouter = require('./routes/register')
 //! detail路由
 const detail = require('./routes/detail');
 //! 實時播報路由
-const time = require('./routes/time')
+const time = require('./routes/time');
+//! 论坛数据
+const forum = require('./routes/forum')
 
 var app = express();
 //!  view engine setup 配置视图相关
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'jade');
 
 //! 第三方中间件配置放在路由中间件之前配置
 app.use(logger('dev'));
@@ -49,6 +51,7 @@ app.use('/api/sing', registerRouter)
 app.use('/api/detail', detail);
 //! 實時路由
 app.use('/api/time', time);
+app.use('/api/forum', forum)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
